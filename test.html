@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<!-- https://github.com/timmywil/panzoom -->
+
+<head>
+    <!-- <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no" /> -->
+    <meta charset="utf-8">
+    <title>Canvas Demo 9</title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.3.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src='https://unpkg.com/panzoom@9.4.0/dist/panzoom.min.js'></script>
+
+
+
+    <!-- <script src="./main.js"></script> -->
+
+    <style>
+        #log {
+            height: 300px;
+            overflow: auto;
+        }
+        
+        .dot {
+            height: 25px;
+            width: 25px;
+            background-color: rgb(77, 199, 158);
+            border-radius: 50%;
+            display: inline-block;
+        }
+        
+        #canvas {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #000;
+            background-color: rgb(255, 255, 255);
+            background-image: linear-gradient(rgba(231, 231, 231, 0.5) 2px, transparent 2px), linear-gradient(90deg, rgba(211, 211, 211, 0.5) 2px, transparent 2px), linear-gradient(rgba(226, 226, 226, 0.28) 1px, transparent 1px), linear-gradient(90deg, rgba(233, 233, 233, 0.28) 1px, transparent 1px);
+            background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+            background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+        }
+        
+        .continer {
+            width: 100%;
+            height: 100%;
+        }
+        
+        body,
+        html {
+            padding: 0;
+        }
+        
+        .grid {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+        }
+        
+        .panning {
+            cursor: grab;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="grid" style="position:relative">
+
+
+        <div style="width:300px;height:100px;border:1px solid #000;background:red; "></div>
+        <span class="dot "></span>
+
+    </div>
+</body>
+
+<script>
+    /*
+     * An infinite grid for any type of editor requiring somekind of visual aid by grid.
+     * Hold down mouse to drag the grid.
+     * Use scolling for zooming in and out.
+     */
+
+    $(".dot").draggable();
+
+    const grid = document.querySelector('.grid');
+    const translate = {
+        scale: 1,
+        translateX: 0,
+        translateY: 0
+    };
+    let panning = false;
+    const pinnedMousePosition = {
+        x: 0,
+        y: 0
+    };
+    const pinnedGridPosition = {
+        x: 0,
+        y: 0
+    };
+
+    const doGrid = () => {
+        grid.addEventListener('wheel', event => {
+            translate.scale += (event.deltaY * (translate.scale / 5000));
+            if (translate.scale > 3) {
+                translate.scale = 3;
+            }
+            if (translate.scale < 0.4) {
+                translate.scale = 0.4;
+            }
+            update();
+        });
+
+        document.addEventListener('mousedown', event => {
+            pinnedGridPosition.x = translate.translateX;
+            pinnedGridPosition.y = translate.translateY;
+            pinnedMousePosition.x = event.clientX;
+            pinnedMousePosition.y = event.clientY;
+            panning = true;
+        });
+
+        document.addEventListener('mouseup', () => {
+            panning = false;
+        });
+
+        grid.addEventListener('mousemove', event => {
+            if (panning) {
+                const diffX = (event.clientX - pinnedMousePosition.x) / translate.scale;
+                const diffY = (event.clientY - pinnedMousePosition.y) / translate.scale;
+                translate.translateX = pinnedGridPosition.x + diffX;
+                translate.translateY = pinnedGridPosition.y + diffY;
+                update();
+            }
+        });
+
+        const update = () => {
+            let transform = '';
+            Object.keys(translate).forEach(property => {
+                transform += property + '(' + translate[property] + (property !== 'scale' ? 'px' : '') + ') ';
+            });
+            grid.style.transform = transform.trim();
+
+            const vars = {
+                a: 9 * translate.scale,
+                b: 10 * translate.scale,
+                c: -.5 * translate.scale,
+                d: translate.scale,
+                e: 99.5 * translate.scale,
+                f: 100 * translate.scale
+            };
+            const backgroundPosition = grid.getBoundingClientRect();
+            const colors = {
+                a: 57,
+                b: 75,
+                c: 80
+            };
+
+            const background = `
+                                repeating-linear-gradient(
+                                0deg,
+                                transparent 0,
+                                transparent ${vars.a}px,
+                                rgb(${colors.b}, ${colors.b}, ${colors.b}) ${vars.a}px,
+                                rgb(${colors.b}, ${colors.b}, ${colors.b}) ${vars.b}px
+                                ) 
+                                ${backgroundPosition.x}px ${backgroundPosition.y}px / ${vars.f}px ${vars.f}px repeat,
+                                repeating-linear-gradient(
+                                90deg,
+                                transparent 0,
+                                transparent ${vars.a}px,
+                                rgb(${colors.b}, ${colors.b}, ${colors.b}) ${vars.a}px,
+                                rgb(${colors.b}, ${colors.b}, ${colors.b}) ${vars.b}px
+                                ) 
+                                ${backgroundPosition.x}px ${backgroundPosition.y}px / ${vars.f}px ${vars.f}px repeat,
+                                repeating-linear-gradient(
+                                0deg,
+                                rgb(${colors.c}, ${colors.c}, ${colors.c}) ${vars.c}px,
+                                rgb(${colors.c}, ${colors.c}, ${colors.c}) ${vars.d}px,
+                                transparent ${vars.d}px,
+                                transparent ${vars.e}px
+                                ) 
+                                ${backgroundPosition.x}px ${backgroundPosition.y}px /  ${vars.f}px ${vars.f}px repeat,
+                                repeating-linear-gradient(
+                                90deg,
+                                rgb(${colors.c}, ${colors.c}, ${colors.c}) ${vars.c}px,
+                                rgb(${colors.c}, ${colors.c}, ${colors.c}) ${vars.d}px,
+                                transparent ${vars.d}px,
+                                transparent ${vars.e}px
+                                ) 
+                                ${backgroundPosition.x}px ${backgroundPosition.y}px /  ${vars.f}px ${vars.f}px repeat,
+                                rgb(${colors.a}, ${colors.a}, ${colors.a});
+                                `;
+
+            console.log(background);
+
+            grid.setAttribute('style', 'background: ' + background);
+        }
+
+        update();
+    };
+
+    doGrid();
+</script>
+
+</html>

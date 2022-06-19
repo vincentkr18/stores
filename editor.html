@@ -1,0 +1,500 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Editor</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css" />
+    <script src="https://kit.fontawesome.com/d6d556d812.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css" />
+    <script src="./editorfunctions.js"></script>
+    <link rel="stylesheet" href="./editorstyle.css" />
+
+    <script src="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.3.3/dist/jBox.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.3.3/dist/jBox.all.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.9/interact.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.worker.min.js"></script>
+
+
+    <!-- include libraries(jQuery, bootstrap) 
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+</head>
+
+<body>
+    <div class="headerall">
+        <div class="collapsebar">
+            <span id="collapse" class="fas fa-bars">
+         </div>
+         <div class="headerlast">
+            <h4>Sample Document</h4>
+            <small>$00.0</small>
+            <small><span class="far fa-folder"></span>All Templates</small>
+            <small>Last updated 2 minutes ago</small>
+        </div>
+        <div class="managebar">
+            <div class="manage">
+                <button type="button"><i id="managebutton" class="fas fa-users"></i>Manage</button>
+            </div>
+            <div class="create">
+                Create Document
+                <input name="file" type="file" id="file" />
+
+            </div>
+
+            <div class="comment">
+                <span class="fas fa-comments"></span>
+            </div>
+            <div class="properties">
+                <button type="button"><span class="fas fa-ellipsis-v"></span></button>
+            </div>
+        </div>
+        <div class="rightbar">
+            <div class="question">
+                <i class="fas fa-question"></i>
+                <button type="button">Need Help</button>
+            </div>
+            <div class="user">
+                <button class="userbutton" type="button">
+               VR
+               </button>
+            </div>
+        </div>
+    </div>
+    <!-- Second Row -->
+    <div class="rowtwo">
+        <div class="pagelayout">
+            <div class="pages">
+
+                <div>
+                    <span class="far fa-file"></span>
+                </div>
+                <div class="vl"></div>
+
+                <div class="texticons">
+                    <select id="select_font">
+                           <option value="Arial">Arial</option>
+                           <option value="Sans Serif" selected>Sans Serif</option>
+                           <option value="Comic Sans MS">Comic Sans MS</option>
+                           <option value="Times New Roman">Times New Roman</option>
+                           <option value="Courier New">Courier New</option>
+                           <option value="Verdana">Verdana</option>
+                           <option value="Trebuchet MS">Trebuchet MS</option>
+                           <option value="Arial Black">Arial Black</option>
+                           <option value="Impact">Impact</option>
+                           <option value="Bookman">Bookman</option>
+                           <option value="Garamond">Garamond</option>
+                           <option value="Palatino">Palatino</option>
+                           <option value="Georgia">Georgia</option>
+                    </select>
+
+                    <select id="select_fontsize">
+                           <option  data-edit="fontSize:5" value="5">5</option>
+                           <option  data-edit="fontSize:8" value="8">8</option>
+                           <option  data-edit="fontSize:12" value="12">12</option>
+                           <option  data-edit="fontSize:14" value="14">14</option>
+                           <option  data-edit="fontSize:16" value="16">16</option>
+                           <option  data-edit="fontSize:20" value="20">20</option>
+                           <option  data-edit="fontSize:16" value="26">26</option>
+                    </select>
+
+                    <button id="boldButton" type="button"><span id="bold" class="fas fa-bold"></span></button>
+                    <button id="italicButton" type="button"><span  class="fas fa-italic"></span></button>
+                    <button id="underlineButton" type="button"><span  class="fas fa-underline"></span></button>
+                    <button type="button"><span  class="fas fa-strikethrough"></span></button>
+                    <button id="centerButton" type="button"><span  class="fas fa-align-left"></span></button>
+                    <button id="leftButton" type="button"><span  class="fas fa-align-center"></span></button>
+                    <button id="rightButton" type="button"><span  class="fas fa-align-right"></span></button>
+                    <button id="justifyButton" type="button"><span  class="fas fa-align-justify"></span></button>
+
+                    <button id="decreaseIndentButton" type="button"><span  class="fas fa-indent"></span></button>
+
+                    <button id="unorderedListButton" type="button"><span  class="fas fa-list-ul"></span></button>
+                    <button id="orderedListButton" type="button"><span  class="fas fa-list-ol"></span></button>
+                    <span class="fas fa-copy"></span>
+                    <span class="fas fa-cut"></span>
+
+                </div>
+            </div>
+            <section class="pagebackground">
+                <div class="pageproperties">
+                    <div>CONTENT</div>
+                    <button class="addPageButton" type="button"><i class="fas fa-plus "></i></button>
+                    <button class="propertyButton" type="button"><i class="fas fa-ellipsis-h"></i></button>
+                </div>
+                <article class="page">
+                    <div class="page3" id="page1">
+                        <div class="textarea" contenteditable="true" spellcheck=f alse>
+
+                            <h4> Delivery Approach</h4>
+                            A few days ago, Amazon announced the availability of a new set of automatic model tuning capabilities in the AWS SageMaker platform. Specifically, the new releases focuses on tuning and optimizing hyperparameters associated with SageMaker models. The
+                            release constitutes a powerful addition in order to streamline the adoption of SageMaker within the data science community. With the new hyperparameter tuning and model optimization capabilities, SageMaker joins a new group
+                            of platforms that are entering the market trying to solve this notorious challenge in deep learning applications.
+                        </div>
+
+                        <div class="insertVideobuttonborder tooltip">
+                            <div class="insertVideobutton">
+                                <span id="insertvideoicon" class="fab fa-youtube"></span>Click to add a video
+                            </div>
+                        </div>
+
+
+
+                        <div class="imagecontainer" style="display:inline-block">
+                            <div class="imageBorder">
+                                <div class="imageBorder2">
+                                    <img class="insertImage" src="user.jpg"></img>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="insertImagebuttonborder">
+                            <div class="insertImagebutton">
+                                <span id="insertImageicon" class="fas fa-upload"></span>Click to upload an image
+                            </div>
+
+                            <div class="imagecontainer" style="display:none;z-index:1">
+                                <div class="imageBorder">
+                                    <div class="imageBorder2">
+                                        <img class="insertImage" src="user.jpg"></img>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="textarea" contenteditable="true" spellcheck=f alse>
+
+                            <h4> Delivery Approach</h4>
+                            A few days ago, Amazon announced the availability of a new set of automatic model tuning capabilities in the AWS SageMaker platform. Specifically, the new releases focuses on tuning and optimizing hyperparameters associated with SageMaker models. The
+                            release constitutes a powerful addition in order to streamline the adoption of SageMaker within the data science community. With the new hyperparameter tuning and model optimization capabilities, SageMaker joins a new group
+                            of platforms that are entering the market trying to solve this notorious challenge in deep learning applications.
+                        </div>
+
+                        <div class="assignTextborder" contenteditable="true">
+                            <div class="assignTextbutton">
+                                <b>Enter value</b>
+                            </div>
+                        </div>
+
+                        <div class="assignInitialsborder">
+                            <div class="assignInitialsbutton">
+                                <b>Initials</b>
+                            </div>
+                        </div>
+
+                        <div class="assignDateborder">
+                            <div class="assignDatebutton">
+                                <b>Select Date</b><span id="assignDateicon" class="far fa-calendar-alt">
+                        </div>
+                    </div>
+
+                    <div class="assignSignatureborder">
+                        <div class="assignSignaturebutton"><span id="assignSignatureicon" class="fas fa-signature"></span>
+                                <b>Signature</b>
+                            </div>
+                        </div>
+                        <div class="imageuploadPopup" style="display:none">
+                            <div class="Imagedrag-area">
+                                <div class="Imageicon">
+                                    <i class="fas fa-images"></i>
+                                </div>
+
+                                <span class="ImagePopupheader">Drag & Drop</span>
+                                <span class="ImagePopupheader">or <span class="ImagePopupbutton">browse</span></span>
+                                <input class="imageuploadinput" type="file" hidden accept="image/*" />
+                                <span class="ImagePopupsupport">Supports: JPEG, JPG, PNG</span>
+                            </div>
+
+
+                        </div>
+                        <div class="sortable">
+                            <div id="item_1">bla</div>
+                            <div id="item_2">bla</div>
+                            <div id="item_3">bla</div>
+                            <div id="item_4">bla</div>
+                            <div id="item_5">bla</div>
+                            <div id="item_6">bla</div>
+                            <div id="item_7">bla</div>
+                            <div id="item_8">bla</div>
+                        </div>
+
+                    </div>
+                </article>
+                <div class="pageproperties">
+                    <div>CONTENT</div>
+                    <button class="addPageButton" type="button"><i class="fas fa-plus "></i></button>
+                    <button class="propertyButton" type="button"><i class="fas fa-ellipsis-h"></i></button>
+                </div>
+                <article class="page">
+                    <div class="page3" id="page2">
+                        <div class="insertTableBorder" id="table-123">
+                            <table class="resizable" id="insertTable" width="100%">
+
+                                <tr>
+                                    <th></th>
+                                    <th class="tableColSelector"><i class="fas fa-grip-horizontal"></i></th>
+                                    <th class="tableColSelector"><i class="fas fa-grip-horizontal"></i></th>
+                                    <th class="tableColSelector"><i class="fas fa-grip-horizontal"></i></th>
+                                    <th class="tableColSelector"><i class="fas fa-grip-horizontal"></i></th>
+                                </tr>
+
+                                <tr>
+                                    <td class="tableRowSelector" contenteditable='true'><i class="fas fa-grip-vertical"></td>
+                                    <td contenteditable='true' >Company</td>
+                                    <td contenteditable='true'>Contact</td>
+                                    <td contenteditable='true'>Country</td>
+                                    <td contenteditable='true'>Sales</td>
+                                </tr>
+                                 
+                                
+                                <tr>
+                                    <td  contenteditable='true' class="tableRowSelector"><i class="fas fa-grip-vertical"></td>
+                                    <td contenteditable='true' >Alfreds Futterkiste</td>
+                                    <td contenteditable='true'>Maria Anders</td>
+                                    <td contenteditable='true'>Germany</td>
+                                    <td contenteditable='true'>450</td>
+                                </tr>
+                                <tr>
+                                    <td contenteditable='true' class="tableRowSelector"><i class="fas fa-grip-vertical"></td>
+                                    <td contenteditable='true'>Berglunds snabbköp</td>
+                                    <td contenteditable='true'>Christina Berglund</td>
+                                    <td contenteditable='true'>Sweden</td>
+                                    <td contenteditable='true'>568</td>
+                                </tr>
+                                 <tr>
+                                    <td  contenteditable='true'class="tableRowSelector"><i class="fas fa-grip-vertical"></td>
+                                    <td contenteditable='true'>Alfreds Futterkiste</td>
+                                    <td contenteditable='true'>Maria Anders</td>
+                                    <td contenteditable='true'>Germany</td>
+                                    <td contenteditable='true'>450</td>
+                                <tr>
+                                    <td  contenteditable='true'class="tableRowSelector"><i class="fas fa-grip-vertical"></td>
+                                    <td contenteditable='true'>Berglunds snabbköp</td>
+                                    <td contenteditable='true'>Christina Berglund</td>
+                                    <td contenteditable='true'>Sweden</td>
+                                    <td contenteditable='true'>568</td>
+                                </tr>
+                                 <tr>
+                                    <td  contenteditable='true'class="tableRowSelector"><i class="fas fa-grip-vertical"></td>
+                                    <td contenteditable='true'>Alfreds Futterkiste</td>
+                                    <td contenteditable='true'>Maria Anders</td>
+                                    <td contenteditable='true'>Germany</td>
+                                    <td contenteditable='true'>450</td>
+                                 </tr>
+                               
+                        </table>
+                        </div>
+
+             
+
+                    <div class="textarea"  contenteditable="true" spellcheck = false>                  
+                        <h4> Delivery Approach</h4>
+                        A few days ago, Amazon announced the availability of a new set of automatic model tuning capabilities in the AWS SageMaker platform. Specifically, the new releases focuses on tuning and optimizing hyperparameters associated with SageMaker models. The release constitutes a powerful addition in order to streamline the adoption of SageMaker within the data science community. With the new hyperparameter tuning and model optimization capabilities, SageMaker joins a new group of platforms that are entering the market trying to solve this notorious challenge in deep learning applications.
+                    </div>
+
+                </div>
+               </article>
+               <div class="pageproperties">
+                  <div>CONTENT</div>
+                  <button  class="addPageButton" type="button"><i class="fas fa-plus "></i></button>
+                                        <button class="propertyButton" type="button"><i class="fas fa-ellipsis-h"></i></button>
+                        </div>
+                        <article>
+                            <div class="page3" id="page3">
+                                <div class="textarea" contenteditable="true" spellcheck=f alse>
+                                    <h4> Delivery Approach</h4>
+                                    A few days ago, Amazon announced the availability of a new set of automatic model tuning capabilities in the AWS SageMaker platform. Specifically, the new releases focuses on tuning and optimizing hyperparameters associated with SageMaker models. The
+                                    release constitutes a powerful addition in order to streamline the adoption of SageMaker within the data science community. With the new hyperparameter tuning and model optimization capabilities, SageMaker joins a new
+                                    group of platforms that are entering the market trying to solve this notorious challenge in deep learning applications.
+                                </div>
+
+                                <div class="textarea" contenteditable="true" spellcheck=f alse>
+                                    <h4> Delivery Approach</h4>
+                                    A few days ago, Amazon announced the availability of a new set of automatic model tuning capabilities in the AWS SageMaker platform. Specifically, the new releases focuses on tuning and optimizing hyperparameters associated with SageMaker models. The
+                                    release constitutes a powerful addition in order to streamline the adoption of SageMaker within the data science community. With the new hyperparameter tuning and model optimization capabilities, SageMaker joins a new
+                                    group of platforms that are entering the market trying to solve this notorious challenge in deep learning applications.
+                                </div>
+
+                                <div class="assignDateborder">
+                                    <div class="assignDatebutton">
+                                        <b>Select Date</b><span id="assignDateicon" class="far fa-calendar-alt">
+                        </div>
+                    </div>
+
+                    <div class="assignSignatureborder">
+                        <div class="assignSignaturebutton"><span id="assignSignatureicon" class="fas fa-signature"></span>
+                                        <b>Signature</b>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                        <article>
+                            <div class="page3" id="page4">
+                                <div class="document-render" id="documentRender">
+                                    <canvas id="the-canvas" style="border: 1px solid black"></canvas>
+                                </div>
+                            </div>
+                        </article>
+                        <div class="pageproperties">
+                            <div>CONTENT</div>
+                            <button class="addPageButton" type="button"><i class="fas fa-plus "></i></button>
+                            <button class="propertyButton" type="button"><i class="fas fa-ellipsis-h"></i></button>
+                        </div>
+            </section>
+            </div>
+            <div class="rightside">
+                <div class="iconbar">
+                    <button class="iconbarbuttons" type="button"><span class="fas fa-plus"></span></button>
+                    <button class="iconbarbuttons" type="button"><span class="far fa-list-alt"></span></button>
+                    <button class="iconbarbuttons" type="button"><span class="far fa-file-code"></span></button>
+                    <button class="iconbarbuttons" type="button"><span class="fas fa-palette"></span></button>
+                    <button class="iconbarbuttons" type="button"><span class="fas fa-th"></span></button>
+                </div>
+                <div class="content">
+                    <div class="contentheader">
+                        <h4> Content</h4>
+                        <span class="fas fa-times"></span>
+                    </div>
+                    <div class="contentcontainer">
+                        </br>
+                        <div> BLOCKS</div>
+                        </br>
+                        <div class="contentbuttons">
+
+                            <div class="insertButton textButton">
+                                <a href="" class="buttoncontainer">
+                                    <span class="fas fa-ellipsis-v" id="onactive"></span>
+                                    <button class="Text" type="button"><b>Text</b></button>
+                                    <span class="fas fa-align-center" id="icon"> </span>
+                                </a>
+                            </div>
+                            <div class="imageButton insertButton">
+                                <a href="" class="buttoncontainer">
+                                    <span class="fas fa-ellipsis-v" id="onactive"></span>
+                                    <button class="Text" type="button"><b>Image</b></button>
+                                    <span class="far fa-images" id="icon"> </span>
+                                </a>
+                            </div>
+                            <div class="insertButton tableButton">
+                                <a href="" class="buttoncontainer">
+                                    <span class="fas fa-ellipsis-v" id="onactive"></span>
+                                    <button class="Text" type="button"><b>Table</b></button>
+                                    <span class="fas fa-border-all" id="icon"> </span>
+                                </a>
+                            </div>
+                            <div class="insertButton">
+                                <a href="" class="buttoncontainer">
+                                    <span class="fas fa-ellipsis-v" id="onactive"></span>
+                                    <button class="Text" type="button"><b>Video</b></button>
+                                    <span class="fas fa-video" id="icon"> </span>
+                                </a>
+                            </div>
+                            <div class="insertButton">
+                                <a href="" class="buttoncontainer">
+                                    <span class="fas fa-ellipsis-v" id="onactive"></span>
+                                    <button class="Text" type="button"><b>Table of contents</b></button>
+                                    <span class="fas fa-list" id="icon"> </span>
+                                </a>
+                            </div>
+                            <div class="insertButton">
+                                <a href="" class="buttoncontainer">
+                                    <span class="fas fa-ellipsis-v" id="onactive"></span>
+                                    <button class="Text" type="button"><b>Page Break</b></button>
+                                    <span class="fas fa-cut" id="icon"> </span>
+                                </a>
+                            </div>
+                            <div class="insertButton">
+                                <a href="" class="buttoncontainer">
+                                    <span class="fas fa-ellipsis-v" id="onactive"></span>
+                                    <button class="Text" type="button"><b>Placeholder</b></button>
+                                    <span class="fas fa-keyboard" id="icon"> </span>
+                                </a>
+                            </div>
+                        </div>
+                        </br>
+                        <div> FILLABLE FIELDS</div>
+                        </br>
+                        <div class="contentbuttons">
+
+                            <div class="insertFloatButton floatText">
+                                <a href="" class="buttoncontainerothers">
+                                    <span class="fas fa-ellipsis-v" id="onactiveothers"></span>
+                                    <button class="Text" type="button"><b>Text</b></button>
+                                    <span class="fas fa-align-center" id="iconothers"> </span>
+                                </a>
+                            </div>
+                            <div class="insertFloatButton floatCardDetails">
+                                <a href="" class="buttoncontainerothers">
+                                    <span class="fas fa-ellipsis-v" id="onactiveothers"></span>
+                                    <button class="Text" type="button"><b>Card Details</b></button>
+                                    <span class="far fa-credit-card" id="iconothers"> </span>
+                                </a>
+                            </div>
+                            <div class="insertFloatButton floatCheckbox">
+                                <a href="" class="buttoncontainerothers">
+                                    <span class="fas fa-ellipsis-v" id="onactiveothers"></span>
+                                    <button class="Text" type="button"><b>Checkbox</b></button>
+                                    <span class="far fa-check-square" id="iconothers"> </span>
+                                </a>
+                            </div>
+                            <div class="insertFloatButton floatDropdown">
+                                <a href="" class="buttoncontainerothers">
+                                    <span class="fas fa-ellipsis-v" id="onactiveothers"></span>
+                                    <button class="Text" type="button"><b>Dropdown</b></button>
+                                    <span class="far fa-caret-square-down" id="iconothers"> </span>
+                                </a>
+                            </div>
+                            <div class="insertFloatButton floatSignature">
+                                <a href="" class="buttoncontainerothers">
+                                    <span class="fas fa-ellipsis-v" id="onactiveothers"></span>
+                                    <button class="Text" type="button"><b>Signature</b></button>
+                                    <span class="fas fa-signature" id="iconothers"> </span>
+                                </a>
+                            </div>
+                            <div class="insertFloatButton floatInitial">
+                                <a href="" class="buttoncontainerothers">
+                                    <span class="fas fa-ellipsis-v" id="onactiveothers"></span>
+                                    <button class="Text" type="button"><b>Initial</b></button>
+                                    <span class="fas fa-pen" id="iconothers"> </span>
+                                </a>
+                            </div>
+                            <div class="insertFloatButton">
+                                <a href="" class="buttoncontainerothers">
+                                    <span class="fas fa-ellipsis-v" id="onactiveothers"></span>
+                                    <button class="Text" type="button"><b>Collect Files</b></button>
+                                    <span class="fas fa-upload" id="iconothers"> </span>
+                                </a>
+                            </div>
+                            <div class="insertFloatButton floatDate">
+                                <a href="" class="buttoncontainerothers">
+                                    <span class="fas fa-ellipsis-v" id="onactiveothers"></span>
+                                    <button class="Text" type="button"><b>Date</b></button>
+                                    <span class="far fa-calendar-alt" id="iconothers"> </span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+
+</html>

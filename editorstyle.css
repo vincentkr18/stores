@@ -1,0 +1,962 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap");
+:root {
+    --main-color: #dd2f6e;
+    --color-dark: #1d2231;
+    --text-grey: #8390a2;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+    font-family: "Nunito", sans-serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+.headerall {
+    display: grid;
+    grid-template-columns: 4% 50% 32% 14%;
+    height: 70px;
+    position: sticky;
+    border: #e6e3e3;
+    border-style: solid;
+    background: white;
+    top: 0;
+    overflow: hidden;
+}
+
+.collapsebar {
+    padding: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.headerlast {
+    padding: 0.7rem;
+    /*border: #dd2f6e;
+  border-style: solid;*/
+}
+
+.manage {
+    padding-top: 1.2rem;
+    border: #3d8dcf;
+    margin-left: 10px;
+    width: 120px;
+}
+
+.create {
+    padding: 1rem;
+    margin-left: 10px;
+    width: 200px;
+}
+
+.properties {
+    padding: 1.1rem;
+    margin-left: 10px;
+}
+
+.managebar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.create button {
+    background: #49c453;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #49c453;
+    font-weight: 900;
+}
+
+.create button:hover {
+    color: #fff;
+    background-color: #3ba343;
+}
+
+.manage button {
+    background: #f7f5f5;
+    border-radius: 15px;
+    color: #575656;
+    font-size: 0.9rem;
+    padding: 0.3rem 1rem;
+    border: 1px solid #f7f5f5;
+    font-weight: bold;
+}
+
+.manage button:hover {
+    color: #575656;
+    background-color: #dedede;
+}
+
+#managebutton {
+    padding-right: 6px;
+}
+
+.properties {
+    padding: 1.1rem;
+    color: #575656;
+}
+
+.comment {
+    /*border: #3d8dcf;
+  border-style: solid;*/
+    width: 70px;
+    padding: 1rem;
+    font-size: 33px;
+    color: #575656;
+}
+
+.comment span:hover {
+    color: #dedede;
+}
+
+.properties button {
+    background-color: white;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding: 8px 12px;
+}
+
+.properties span:hover {
+    background-color: #f7f5f5;
+}
+
+.rightbar {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.question {
+    /*border: #3d8dcf;
+  border-style: solid;*/
+    padding-top: 1.1rem;
+}
+
+.user {
+    /*border: #3d8dcf;
+  border-style: solid;*/
+    padding-top: 0.9rem;
+}
+
+.user button {
+    background: #ffef9e;
+    border-radius: 50%;
+    color: #cfae0a;
+    font-size: 1.2rem;
+    border: 1px solid #ffef9e;
+    font-weight: bold;
+    padding: 0.3rem;
+    border-color: #d9a602;
+}
+
+.question button {
+    border: none;
+    outline: none;
+    background-color: white;
+    padding-right: 2rem;
+    color: #369c45;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.question i {
+    font-size: 1rem;
+    padding: 0.3rem;
+    background: #91db9c;
+    border-radius: 50%;
+    padding: 0.5rem;
+    left: 2rem;
+    display: grid;
+    color: #fff;
+}
+
+.rowtwo {
+    display: grid;
+    grid-template-columns: 73% 27%;
+}
+
+.pages {
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+    font-size: 1rem;
+    color: #585757;
+    height: 40px;
+    /*box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);*/
+    border-bottom: 1px solid #e6e3e3;
+    position: fixed;
+    top: 70px;
+    background: white;
+    width: 73%;
+    display: grid;
+    grid-template-columns: 3% 3% 80%;
+}
+
+.vl {
+    border-left: 1px solid rgb(221, 221, 221);
+    height: 20px;
+}
+
+.texticons span,
+select {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 0.2rem;
+    padding-left: 0.4rem;
+    height: 20px;
+    font-size: 12px;
+}
+
+.texticons button {
+    border: none;
+    background: none;
+}
+
+.texticons button:hover {
+    background: rgb(243, 241, 241);
+}
+
+.texticons span:hover {
+    color: rgb(58, 148, 50);
+}
+
+.iconbar {
+    border: #e6e3e3;
+    border-style: solid;
+    grid-auto-rows: 50px;
+    font-size: 0.7rem;
+    left: 0;
+    display: grid;
+    background: white;
+    width: 50px;
+}
+
+.iconbarbuttons {
+    background: white;
+    outline: none;
+    border: none;
+    font-size: 1.2rem;
+    color: rgb(99, 98, 98);
+}
+
+.iconbarbuttons:hover {
+    background: rgb(243, 243, 243);
+}
+
+.rightside {
+    display: grid;
+    grid-template-columns: 14% 86%;
+    position: fixed;
+    top: 70px;
+    background: white;
+    margin-left: 1100px;
+    height: calc(100vh - 80px);
+    border: 1px solid white;
+    width: 430px;
+}
+
+.contentheader {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.7rem;
+    padding-left: 0.5rem;
+    box-shadow: none;
+    margin-left: 0.2rem;
+    border: 1px solid white;
+    width: 100%;
+}
+
+.contentheader span {
+    color: #c5c3c4;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+}
+
+section {
+    /*min-height: calc(100vh - 110px);*/
+    height: calc(100vh - 110px);
+    background: #eeeeec;
+    width: 100%;
+    /*display: flex;
+  justify-content: space-evenly;*/
+    float: left;
+    margin-top: 40px;
+    overflow-y: scroll;
+}
+
+.pageproperties {
+    margin-left: 150px;
+    margin-top: 30px;
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+    background: #eeeeec;
+    width: 70%;
+    color: #797979;
+}
+
+.pageproperties div {
+    font-size: 14px;
+}
+
+.pageproperties button {
+    border: none;
+    outline: none;
+    width: 1.9rem;
+    background: none;
+    color: #797979;
+    font-size: 18px;
+}
+
+article {
+    width: 70%;
+    background: white;
+    height: 1500px;
+    margin-left: 150px;
+    /*margin-top: 30px;*/
+    margin-top: 0.5rem;
+    padding: 1rem;
+    box-shadow: 2px 2px 10px rgba(151, 148, 148, 0.2);
+    overflow: visible;
+    position: relative;
+}
+
+.pagelayout {
+    overflow: scroll;
+}
+
+.contentcontainer {
+    margin-left: 0.8rem;
+    font-size: 14px;
+}
+
+.contentbuttons {
+    display: grid;
+    grid-template-columns: 45% 45%;
+    column-gap: 0.8rem;
+    row-gap: 0.5rem;
+    margin: 6px;
+}
+
+.buttoncontainer {
+    display: inline-block;
+    width: 160px;
+    height: 45px;
+    font-size: 22px;
+    z-index: 0;
+    overflow: hidden;
+    border: 1px solid #e6e3e3;
+    background: #f3f1f1;
+    border-radius: 2px;
+}
+
+.buttoncontainerothers {
+    display: inline-block;
+    width: 160px;
+    height: 45px;
+    font-size: 22px;
+    z-index: 0;
+    overflow: hidden;
+    border: 1px solid #e6e3e3;
+    background: #f5fcf3;
+    border-radius: 2px;
+}
+
+.Text {
+    height: 40px;
+    width: 90px;
+    outline: none;
+    border: none;
+    padding-left: 0rem;
+    font-size: 13px;
+    background: none;
+    border: 0px solid black;
+    font-weight: 500;
+    color: #353535;
+}
+
+#onactiveothers {
+    display: none;
+    font-size: 0.9rem;
+    float: left;
+    border: 1px solid #dddcdc;
+    height: 50px;
+    padding-top: 0.8rem;
+    padding-left: 0.6rem;
+    padding-right: 0.4rem;
+    width: 25px;
+    left: 0;
+    background: #e3f8e1;
+    color: #74c568;
+}
+
+#onactive {
+    display: none;
+    font-size: 0.9rem;
+    float: left;
+    border: 1px solid #dddcdc;
+    height: 50px;
+    padding-top: 0.8rem;
+    padding-left: 0.6rem;
+    padding-right: 0.4rem;
+    width: 25px;
+    left: 0;
+    background: #e0e0e0;
+    color: #9e9e9e;
+}
+
+#iconothers {
+    font-size: 1.1rem;
+    padding-top: 0.4rem;
+    padding-left: 2rem;
+    width: 50px;
+    border: 0px solid black;
+    color: #74c568;
+}
+
+#icon {
+    font-size: 1.1rem;
+    padding-top: 0.4rem;
+    padding-left: 2rem;
+    width: 50px;
+    border: 0px solid black;
+    color: #8a8a8a;
+}
+
+.Text:hover {
+    font-size: 14px;
+    text-indent: 20px;
+    width: 100px;
+    cursor: move;
+    transition: all 0.2s linear 0s;
+}
+
+.buttoncontainer:hover>#icon {
+    display: none;
+}
+
+.buttoncontainer:hover>#onactive {
+    display: block;
+}
+
+.buttoncontainerothers:hover>#iconothers {
+    display: none;
+}
+
+.buttoncontainerothers:hover>#onactiveothers {
+    display: block;
+}
+
+.textarea {
+    padding-left: 1rem;
+    padding: 0.5rem;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.textarea:hover {
+    border: 1px solid rgb(44, 194, 81);
+}
+
+.textarea:hover+.texticons {
+    display: block;
+}
+
+.insertVideobuttonborder {
+    background: white;
+    width: 100%;
+    height: 70px;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+#insertvideoicon {
+    margin-right: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.insertVideobutton {
+    background: #f1f1f1;
+    padding: 1.2rem;
+    display: flex;
+    justify-content: center;
+    width: 98.5%;
+    height: 60px;
+    margin-left: 0.3rem;
+    margin-top: 0.2rem;
+    color: rgb(88, 88, 88);
+}
+
+.insertVideobuttonborder:hover {
+    border: 1px solid rgb(44, 194, 81);
+}
+
+.imagecontainer {
+    background: white;
+    width: 100%;
+    overflow: auto;
+    border: 1px solid rgb(255, 255, 255);
+    height: auto;
+    padding: 1rem;
+}
+
+.insertImage {
+    min-width: 100px;
+    min-height: 100px;
+    height: 100%;
+    width: 100%;
+}
+
+.drop {
+    border: 2px solid rgb(121, 17, 17);
+}
+
+
+/*.insertImage {
+  min-width: 200px;
+  min-height: 200px;
+  align-items: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+}*/
+
+.imagecontainer:hover {
+    border: 1px solid rgb(44, 194, 81);
+}
+
+.insertImagebuttonborder {
+    background: white;
+    width: 100%;
+    height: 70px;
+    border: 1px solid rgb(253, 255, 254);
+    margin-bottom: 0.3rem;
+}
+
+#insertImageicon {
+    margin-right: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.insertImagebutton {
+    background: #f1f1f1;
+    padding: 1.2rem;
+    display: flex;
+    justify-content: center;
+    width: 98.5%;
+    height: 60px;
+    margin-left: 0.3rem;
+    margin-top: 0.2rem;
+    color: rgb(87, 87, 87);
+}
+
+.insertImagebuttonborder:hover {
+    border: 1px solid rgb(44, 194, 81);
+}
+
+.assignTextborder {
+    width: 200px;
+    height: 50px;
+    border: 1.5px solid rgb(48, 167, 68);
+    margin-bottom: 0.3rem;
+}
+
+.assignTextbutton {
+    background: rgb(229, 238, 232);
+    height: 100%;
+    color: rgb(41, 150, 59);
+    font-weight: 500;
+    padding: 0.5rem;
+}
+
+.assignInitialsborder {
+    width: 200px;
+    height: 50px;
+    border: 1.5px solid rgb(48, 167, 68);
+    margin-bottom: 0.3rem;
+}
+
+.assignInitialsbutton {
+    background: rgb(229, 238, 232);
+    height: 100%;
+    color: rgb(41, 150, 59);
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.assignDateborder {
+    width: 200px;
+    height: 25px;
+    border: 1.5px solid rgb(48, 167, 68);
+    margin-bottom: 0.3rem;
+}
+
+.assignDatebutton {
+    display: flex;
+    justify-content: space-between;
+    background: rgb(229, 238, 232);
+    height: 100%;
+    color: rgb(41, 150, 59);
+    font-weight: 400;
+}
+
+.assignDatebutton span {
+    color: rgb(122, 122, 122);
+    padding-top: 3px;
+    padding-right: 3px;
+}
+
+.assignSignatureborder {
+    width: 200px;
+    height: 65px;
+    border: 1.5px solid rgb(48, 167, 68);
+    margin-bottom: 0.3rem;
+}
+
+.assignSignaturebutton {
+    background: rgb(238, 243, 240);
+    height: 100%;
+    color: rgb(6, 95, 19);
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.assignSignaturebutton span {
+    margin-right: 0.5rem;
+}
+
+.insertTableBorder {
+    padding: 0.3rem;
+    border: 1.5px solid rgb(255, 255, 255);
+}
+
+.insertTableBorder:hover {
+    border: 1.5px solid rgb(48, 167, 68);
+}
+
+#insertTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#insertTable td:not(.tableRowSelector) {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#insertTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#insertTable td:not(.tableRowSelector):hover {
+    background-color: #ddd;
+}
+
+
+/*#insertTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04aa6d;
+  color: white;
+}*/
+
+#insertTable th.tableColSelector {
+    background-color: #ffffff;
+    height: 10px;
+    border: 1px solid #ddd;
+}
+
+#insertTable th {
+    border: 1px solid #ddd;
+}
+
+td.tableRowSelector {
+    width: 10px;
+    background-color: #ffffff;
+}
+
+td.tableRowSelector {
+    width: 10px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+}
+
+tr.rowSelected {
+    border: 3px solid rgb(79, 182, 84);
+}
+
+.tableRowSelector i {
+    font-size: 10px;
+    color: rgb(150, 150, 150);
+}
+
+.tableColSelector i {
+    font-size: 10px;
+    color: rgb(150, 150, 150);
+}
+
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin: 0;
+}
+
+
+/* The actual popup */
+
+.popuptext i {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-left: 0.8rem;
+    z-index: 1;
+}
+
+.popuptext i:hover {
+    color: grey;
+}
+
+.imageBorder {
+    border: 1.5px solid rgb(48, 129, 167);
+    padding: 1rem;
+    height: 350px;
+    width: 450px;
+}
+
+#nwgrip,
+#negrip,
+#swgrip,
+#segrip,
+#ngrip,
+#egrip,
+#sgrip,
+#wgrip {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 1px solid #7e7e7e;
+}
+
+#nwgrip {
+    left: -5px;
+    top: -5px;
+}
+
+#negrip {
+    top: -5px;
+    right: -5px;
+}
+
+#swgrip {
+    bottom: -5px;
+    left: -5px;
+}
+
+#segrip {
+    bottom: -5px;
+    right: -5px;
+}
+
+#ngrip {
+    top: -5px;
+    left: 50%;
+}
+
+#sgrip {
+    bottom: -5px;
+    left: 50%;
+}
+
+#wgrip {
+    left: -5px;
+    top: 50%;
+}
+
+#egrip {
+    right: -5px;
+    top: 50%;
+}
+
+.highlight {
+    background-color: yellow;
+}
+
+.boldtext {
+    font-weight: bold;
+}
+
+.italictext {
+    font-style: italic;
+}
+
+.italictext {
+    font-style: italic;
+}
+
+.underlinetext {
+    text-decoration: underline;
+}
+
+.centerText {
+    text-align: center;
+}
+
+.leftText {
+    float: left;
+}
+
+.rightText {
+    float: right;
+}
+
+.unorderedList {
+    list-style-type: disc;
+}
+
+.orderedList {
+    list-style-type: decimal;
+}
+
+.decreaseIndent {
+    text-indent: 2rem;
+}
+
+#myColors {
+    background-color: rgb(46, 46, 46);
+    color: white;
+    font-weight: bold;
+    width: 80px;
+    font-size: 0.8rem;
+    border: none;
+    outline: none;
+    height: 23px;
+}
+
+.Imagedrag-area {
+    height: 400px;
+    border: 3px dashed #e0eafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px auto;
+}
+
+h3 {
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.Imagedrag-area .Imageicon {
+    font-size: 50px;
+    color: #1683ff;
+}
+
+.Imagedrag-area .ImagePopupheader {
+    font-size: 20px;
+    font-weight: 500;
+    color: #34495e;
+}
+
+.Imagedrag-area .ImagePopupsupport {
+    font-size: 12px;
+    color: gray;
+    margin: 10px 0 15px 0;
+}
+
+.Imagedrag-area .ImagePopupbutton {
+    font-size: 20px;
+    font-weight: 500;
+    color: #1683ff;
+    cursor: pointer;
+}
+
+.Imagedrag-area.active {
+    border: 2px solid #1683ff;
+}
+
+.Imagedrag-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.colSelected {
+    background: #ffff00;
+}
+
+.ui-sortable-placeholder {
+    border: 1px solid rgb(12, 194, 170);
+    visibility: visible !important;
+}
+
+.insertFloatButton {
+    z-index: 10;
+}
+
+.draggable img {
+    width: 40px;
+    height: 40px;
+}
+
+
+/*.ui-draggable-dragging {
+  width: auto;
+  height: auto;
+}*/
+
+.page3 {
+    height: 100%;
+    width: 100%;
+    background: #eee;
+    display: block;
+}
+
+.buttonDrag {
+    border: 2px solid #1683ff;
+}
+
+.insertImagebuttonborder {
+    height: auto;
+}
+
+.propertyButton:hover {
+    background-color: #e3e4e3;
+}
+
+.pagePropertiesDropdown li {
+    color: #575656;
+    font-size: 0.9rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+}
+
+.pagePropertiesDropdown i {
+    margin-right: 0.5rem;
+}
+
+.pagePropertiesDropdown li:hover {
+    background-color: #eeeeee;
+}
+
+.addPageButton:hover {
+    background-color: #e3e4e3;
+}
